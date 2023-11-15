@@ -1,6 +1,6 @@
 @extends('layout.admin')
 @section('content')
-<div class="flex justify-between">
+<div class="flex justify-between ">
     <h1 class="text-2xl font-bold mb-4">Tambah Product</h1>
 </div>
 <div>

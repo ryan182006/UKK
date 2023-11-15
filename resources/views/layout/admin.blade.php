@@ -101,7 +101,7 @@
     
             <!-- Content -->
             <div class="flex p-10 max-h-[calc(100vh-56px)] text-black w-full z-40 mt-[56px]">
-               <div class="text-black bg-white rounded-lg shadow-2xl p-10 w-full">
+               <div class="text-black bg-white rounded-lg shadow-2xl p-10 w-full overflow-auto ">
                   @yield('content')
                </div>
             </div>

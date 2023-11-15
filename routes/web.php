@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,7 @@ Route::post('/register', [RegisterController::class, 'register'])->name('createR
 Route::group(['middleware'=>['auth','ChekRole:admin']],function(){
     Route::get('/admin',[AdminController::class,'index']);
     Route::resource('barang', BarangController::class);
+    Route::resource('user',UserController::class);
 });
 
 

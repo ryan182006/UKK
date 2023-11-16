@@ -33,6 +33,7 @@ Route::post('/register', [RegisterController::class, 'register'])->name('createR
 Route::group(['middleware'=>['auth','ChekRole:admin']],function(){
     Route::get('/admin',[AdminController::class,'index']);
     Route::resource('barang', BarangController::class);
+    
     Route::resource('user',UserController::class);
 });
 

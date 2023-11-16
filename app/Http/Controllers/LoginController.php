@@ -14,7 +14,7 @@ class LoginController extends Controller
     public function prosesLogin(Request $request){
         $request -> validate([
             'email'=>'required',
-            'password' => 'required'
+            'password' => 'required|min:8'
 
         ]);
         $data =[

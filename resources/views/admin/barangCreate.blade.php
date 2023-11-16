@@ -3,13 +3,15 @@
 <div class="flex justify-between ">
     <h1 class="text-2xl font-bold mb-4">Tambah Product</h1>
 </div>
-<div>
-    <a href="/barang" class="text-gray-300 hover:text-black">Back</a>
+<div class="">
+    <a href="/barang" class="text-gray-300 hover:text-black"><svg class="w-6 h-6 text-gray-400 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
+      </svg></a>
     <form class="" action="/barang" method="POST" enctype="multipart/form-data">
         @csrf
         @method('POST')
         <div class="mb-4">
-            <label for="nama_barang" class="block text-gray-700 font-semibold mb-2">Nama barang</label>
+            <label for="nama_barang" class="block text-gray-700 font-semibold my-2">Nama barang</label>
             <input type="text" id="nama_barang" name="nama_barang" class="w-full border border-gray-300 p-2 rounded  @error('nama_barang') is-invalid @enderror" placeholder="Masukkan Nama Barang">
             
             @error('nama_barang')

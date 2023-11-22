@@ -20,7 +20,9 @@ use App\Http\Controllers\UserController;
 */
 
 
-Route::get('/', [LoginController::class, 'index'])->name('login');
+Route::get('/',[MainController::class,'guest']);
+
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/prosesLogin', [LoginController::class, 'prosesLogin'])->name('prosesLogin');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 // register
@@ -42,9 +44,6 @@ Route::group(['middleware'=>['auth','ChekRole:user']],function(){
 });
 
 
-// Route::get('/', function () {
-//     return view('login/login');
-// })->name('login');
 // Route::get('/register', function () {
 //     return view('login/register');
 // })->name('register');

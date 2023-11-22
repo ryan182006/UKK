@@ -86,7 +86,6 @@ class BarangController extends Controller
         }
 
         Barang::destroy($barang->id);
-
         return redirect('/barang')->with('pesan', 'Post berhasil di hapus');
     }
 }

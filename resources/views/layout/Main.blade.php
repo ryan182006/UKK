@@ -3,69 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Toko Online</title>
     @vite('resources/css/app.css')
 </head>
-<body>
-
-    <header class="bg-blue-500 p-4 flex justify-between items-center text-white">
-        <div class="container mx-auto">
-            <h1 class="text-3xl font-semibold">E-commerce Store</h1>
-            <p>Your one-stop shop for all your needs.</p>
-        </div>
-
-        <form action="/logout" method="post">
-            @csrf
-            <button type="submit" class="">
-                <i class=""></i>
-                <span>Sign Out</span>
-            </button>
-        </form>
-
-    </header>
-    
-    <!-- Main Content -->
-    <div class="container mx-auto my-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <!-- Product 1 -->
-            <div class="bg-white p-4 shadow-md rounded-lg">
-                <img src="" alt="Product 1" class="w-full h-32 object-cover mb-4">
-                <h2 class="text-lg font-semibold">Product 1</h2>
-                <p class="text-gray-600">$19.99</p>
-                <button class="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Add to Cart</button>
+<body class="bg-gray-100">
+    <nav class="bg-white shadow">
+        <div class="container mx-auto px-6 py-3 md:flex md:items-center md:justify-between">
+            <div class="flex items-center justify-between">
+                <div>
+                    <a href="" class="text-gray-800 text-xl font-bold md:text-2xl">
+                        Toko Online
+                    </a>
+                </div>
             </div>
-    
-            <!-- Product 2 -->
-            <div class="bg-white p-4 shadow-md rounded-lg">
-                <img src="product2.jpg" alt="Product 2" class="w-full h-32 object-cover mb-4">
-                <h2 class="text-lg font-semibold">Product 2</h2>
-                <p class="text-gray-600">$29.99</p>
-                <button class="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Add to Cart</button>
+
+            <div class="md:hidden">
+                <button @click="isOpen = !isOpen" class="block text-gray-800 hover:text-gray-600 focus:text-gray-600 focus:outline-none">
+                    <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+                        <path d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
             </div>
-    
-            <!-- Product 3 -->
-            <div class="bg-white p-4 shadow-md rounded-lg">
-                <img src="product3.jpg" alt="Product 3" class="w-full h-32 object-cover mb-4">
-                <h2 class="text-lg font-semibold">Product 3</h2>
-                <p class="text-gray-600">$39.99</p>
-                <button class="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Add to Cart</button>
-            </div>
-    
-            <!-- Product 4 -->
-            <div class="bg-white p-4 shadow-md rounded-lg">
-                <img src="product4.jpg" alt="Product 4" class="w-full h-32 object-cover mb-4">
-                <h2 class="text-lg font-semibold">Product 4</h2>
-                <p class="text-gray-600">$49.99</p>
-                <button class="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Add to Cart</button>
+
+            <div :class="isOpen ? 'block' : 'hidden'" class="hidden md:block">
+                <ul class="list-none flex flex-row mt-4 md:mt-0">
+                    <li class="mr-6">
+                        <a href="" class="text-gray-800 text-lg font-semibold hover:text-gray-600">Beranda</a>
+                    </li>
+                    <li class="mr-6">
+                        <a href="" class="text-gray-800 text-lg font-semibold hover:text-gray-600">Toko</a>
+                    </li>
+                    <li class="mr-6">
+                        <a href="" class="text-gray-800 text-lg font-semibold hover:text-gray-600">Tentang Kami</a>
+                    </li>
+                    <li class="mr-6">
+                        <a href="" class="text-gray-800 text-lg font-semibold hover:text-gray-600">Kontak</a>
+                    </li>
+                </ul>
             </div>
         </div>
+    </nav>
+
+    <div class="container mx-auto px-6 py-16">
+        <h2 class="text-4xl font-bold text-center">Toko Online</h2>
+        <p class="text-center mt-4">Temukan berbagai produk kebutuhan anda.</p>
+
+
+        <main>
+            @yield('content')
+        </main>
     </div>
-    
-    <!-- Footer -->
-    <footer class="bg-gray-200 py-4">
-        <div class="container mx-auto text-center">
-            &copy; {{ date('Y') }} E-commerce Store. All rights reserved.
+
+    <footer class="bg-gray-800 text-white px-6 py-4">
+        <div class="container mx-auto">
+            <p>&copy; 2022 - Toko Online. All rights reserved.</p>
         </div>
     </footer>
 </body>

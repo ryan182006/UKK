@@ -31,9 +31,6 @@
             <div :class="isOpen ? 'block' : 'hidden'" class="hidden md:block">
                 <ul class="list-none flex flex-row mt-4 md:mt-0">
                     <li class="mr-6">
-                        <a href="" class="text-gray-800 text-lg font-semibold hover:text-gray-600">Beranda</a>
-                    </li>
-                    <li class="mr-6">
                         <a href="" class="text-gray-800 text-lg font-semibold hover:text-gray-600">Toko</a>
                     </li>
                     <li class="mr-6">

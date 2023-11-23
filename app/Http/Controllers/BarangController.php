@@ -33,8 +33,8 @@ class BarangController extends Controller
     {
         $validatedData = $request->validate([
             'nama_barang' => 'required|max:255',
-            'harga' => 'required|max:225',
-            'stock' => 'required|max:225',
+            'harga' => 'required',
+            'stock' => 'required',
             'gambar' => 'image|file',
         ]);
         if ($request->file('gambar')) {
@@ -73,6 +73,7 @@ class BarangController extends Controller
     public function update(Request $request, Barang $barang)
     {
         //
+        
     }
 
     /**

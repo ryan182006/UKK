@@ -22,7 +22,7 @@
         </div>
         <div class="mb-4">
             <label for="harga" class="block text-gray-700 font-semibold mb-2">Harga</label>
-            <input type="text" id="harga" name="harga" class="w-full border border-gray-300 p-2 rounded  @error('harga') is-invalid @enderror" placeholder="Masukkan Harga">
+            <input type="number" id="harga" name="harga" class="w-full border border-gray-300 p-2 rounded  @error('harga') is-invalid @enderror" placeholder="Masukkan Harga">
             @error('harga')
             <div class="invalid-feedback">
                 {{ $message }}
@@ -31,7 +31,7 @@
         </div>
         <div class="mb-4">
             <label for="stock" class="block text-gray-700 font-semibold mb-2">Stock</label>
-            <input type="text" id="stock" name="stock" class="w-full border border-gray-300 p-2 rounded  @error('stock') is-invalid @enderror" placeholder="Masukkan Stock">
+            <input type="number" id="stock" name="stock" class="w-full border border-gray-300 p-2 rounded  @error('stock') is-invalid @enderror" placeholder="Masukkan Stock">
             @error('stock')
             <div class="invalid-feedback">
                 {{ $message }}

@@ -1,11 +1,11 @@
 @extends('layout.admin')
 @section('content')
 <div class="flex justify-between">
-    <h1 class="text-2xl font-bold mb-4">Tambah Product</h1>
+    <h1 class="text-2xl font-bold mb-4">Edit Product</h1>
 </div>
 <div>
     <a href="/barang" class="text-gray-300 hover:text-black">Back</a>
-    <form class="" action="/barang/{{$barang->id}}" method="POST" enctype="multipart/form-data">
+    <form class="" action="/barang/{{$barangs->id}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="mb-4">

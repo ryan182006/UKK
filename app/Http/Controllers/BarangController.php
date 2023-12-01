@@ -73,6 +73,33 @@ class BarangController extends Controller
     public function update(Request $request, Barang $barang)
     {
         //
+        $rules = [
+            'nama_barang' => 'required|max:255',
+            'harga' => 'required',
+            'stock' => 'required',
+            'gambar' => 'image|file',
+        ];
+        
+        // if ($request->kategori != $barang->kategori) {
+        //     $rules['kategori'] = 'required|unique:barangs';
+        // }
+
+        $validatedData = $request->validate($rules);
+
+        if ($request->file('gambar')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['gambar'] = $request->file('gambar')->store('gambar');
+        }
+
+        // $validatedData['user_id'] = auth()->user()->id;
+        // $validatedData['excerpt'] = Str::limit(Strip_tags($request->body), 200);
+
+        Barang::where('id', $barang->id)
+            ->update($validatedData);
+
+        return redirect('/barang')->with('pesan', 'Post berhasil di Update');
         
     }
 

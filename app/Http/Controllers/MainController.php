@@ -14,8 +14,12 @@ class MainController extends Controller
     }
 
     public function index(){
+        $barang = Barang::all();
+        $jum_barang = $barang->count();
         return view('content',[
-            'barangs' =>Barang::all()
+            'barangs' => $barang,
+            'jumlah' => $jum_barang
+
         ]);
     }
 }

@@ -8,7 +8,7 @@
                 @csrf
 
                 @if (session()->has('error'))
-                <div class="mb-4 rounded-lg bg-orange-50 px-6 py-5 text-base text-red-600" role="alert">
+                <div class="mb-4 rounded-lg bg-orange-100 px-6 py-5 text-base text-red-600" role="alert">
                 {{ session('error') }}
               </div>
                 @endif

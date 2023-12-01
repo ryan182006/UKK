@@ -20,7 +20,7 @@
         </div>
         <div class="mb-4">
             <label for="harga" class="block text-gray-700 font-semibold mb-2">Harga</label>
-            <input type="text" value="{{old('harga', $barangs->harga)}}" id="harga" name="harga" class="w-full border border-gray-300 p-2 rounded  @error('harga') is-invalid @enderror" placeholder="Masukkan Harga">
+            <input type="number" value="{{old('harga', $barangs->harga)}}" id="harga" name="harga" class="w-full border border-gray-300 p-2 rounded  @error('harga') is-invalid @enderror" placeholder="Masukkan Harga">
             @error('harga')
             <div class="invalid-feedback">
                 {{ $message }}
@@ -29,7 +29,7 @@
         </div>
         <div class="mb-4">
             <label for="stock" class="block text-gray-700 font-semibold mb-2">Stock</label>
-            <input type="text" value="{{old('stock', $barangs->stock)}}" id="stock" name="stock" class="w-full border border-gray-300 p-2 rounded  @error('stock') is-invalid @enderror" placeholder="Masukkan Stock">
+            <input type="number" value="{{old('stock', $barangs->stock)}}" id="stock" name="stock" class="w-full border border-gray-300 p-2 rounded  @error('stock') is-invalid @enderror" placeholder="Masukkan Stock">
             @error('stock')
             <div class="invalid-feedback">
                 {{ $message }}
@@ -37,8 +37,14 @@
             @enderror
         </div>
         <div class="mb-4">
-            <label for="gambar" class="block text-gray-700 font-semibold mb-2">Deskripsi</label>
-            <input id="gambar" value="{{old('gambar', $barangs->gambar)}}" type="file" name="gambar" class="w-full border border-gray-300 p-2 rounded   @error('gambar') is-invalid @enderror" placeholder="Masukkan deskripsi">
+            <label for="image" class="form-label">Gambar</label>
+            <input type="hidden" name="oldImage" value="{{$barangs->gambar}}">
+            @if($barangs->gambar)
+            <img src="{{asset('storage/'.$barangs->gambar)}}" class="img-preview img-fluid h-[200px] my-3">
+            @else
+            <img class="img-preview img-fluid mb-3 col-sm-5">
+            @endif
+            <input class="form-control  @error('gambar') is-invalid @enderror" type="file" id="gambar" name="gambar" onchange="previewImage()">
             @error('gambar')
             <div class="invalid-feedback">
                 {{ $message }}
@@ -46,7 +52,7 @@
             @enderror
         </div>
         <div class="text-center">
-            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">Buat Data</button>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">Rubah Data</button>
         </div>
     </form>
 </div>

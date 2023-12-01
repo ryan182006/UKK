@@ -39,7 +39,7 @@
             @enderror
         </div>
         <div class="mb-4">
-            <label for="gambar" class="block text-gray-700 font-semibold mb-2">Deskripsi</label>
+            <label for="gambar" class="block text-gray-700 font-semibold mb-2">Gambar</label>
             <input id="gambar" type="file" name="gambar" class="w-full border border-gray-300 p-2 rounded   @error('gambar') is-invalid @enderror" placeholder="Masukkan deskripsi">
             @error('gambar')
             <div class="invalid-feedback">

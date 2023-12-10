@@ -35,6 +35,7 @@ class BarangController extends Controller
             'nama_barang' => 'required|max:255',
             'harga' => 'required',
             'stock' => 'required',
+            'deskripsi' => 'required',
             'gambar' => 'image|file',
         ]);
         if ($request->file('gambar')) {
@@ -77,6 +78,7 @@ class BarangController extends Controller
             'nama_barang' => 'required|max:255',
             'harga' => 'required',
             'stock' => 'required',
+            'deskripsi' => 'required',
             'gambar' => 'image|file',
         ];
         

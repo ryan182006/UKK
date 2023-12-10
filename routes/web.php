@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\KeranjangController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MainController;
@@ -41,6 +42,7 @@ Route::group(['middleware'=>['auth','ChekRole:admin']],function(){
 
 Route::group(['middleware'=>['auth','ChekRole:user']],function(){
     Route::get('/beranda',[MainController::class,'index']);
+    Route::get('/cart',[KeranjangController::class,'index']);
 });
 
 

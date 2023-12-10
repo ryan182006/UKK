@@ -19,6 +19,16 @@
             @enderror
         </div>
         <div class="mb-4">
+            <label for="deskripsi" class="block text-gray-700 font-semibold mb-2">Deskrips</label>
+            <input type="text" value="{{old('deskripsi', $barangs->deskripsi)}}" id="deskripsi" name="deskripsi" class="w-full border border-gray-300 p-2 rounded  @error('deskripsi') is-invalid @enderror" placeholder="Masukkan Deskripsi Barang">
+            
+            @error('deskripsi')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>
+        <div class="mb-4">
             <label for="harga" class="block text-gray-700 font-semibold mb-2">Harga</label>
             <input type="number" value="{{old('harga', $barangs->harga)}}" id="harga" name="harga" class="w-full border border-gray-300 p-2 rounded  @error('harga') is-invalid @enderror" placeholder="Masukkan Harga">
             @error('harga')

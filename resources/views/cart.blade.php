@@ -45,7 +45,11 @@
                             </div>
                         </td>
                         <td class="text-left md:table-cell p-2">
-                            <button class="text-red-600 hover:text-red-900">Remove</button>
+                            <form action="/cart/cart/{{ $keranjang->id }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="text-red-600 hover:text-red-900">Remove</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

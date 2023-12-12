@@ -124,5 +124,8 @@ class KeranjangController extends Controller
     public function destroy(Keranjang $keranjang)
     {
         //
+        $hapusBarang = Keranjang::findOrFail($keranjang->id);
+        $hapusBarang->delete();
+        return back()->with('success', 'Berhasil menghapus barang dari keranjang');
     }
 }

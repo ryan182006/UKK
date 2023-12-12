@@ -45,6 +45,7 @@ Route::group(['middleware'=>['auth','ChekRole:user']],function(){
     Route::get('/beranda',[MainController::class,'index'])->name('beranda');
     Route::resource('cart',KeranjangController::class);
     Route::post('cart/{barang:id}',[KeranjangController::class,'addToCart']);
+    Route::delete('cart/cart/{keranjang:id}',[KeranjangController::class,'destroy']);
 });
 
 

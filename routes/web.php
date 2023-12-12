@@ -9,6 +9,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,8 +42,9 @@ Route::group(['middleware'=>['auth','ChekRole:admin']],function(){
 
 
 Route::group(['middleware'=>['auth','ChekRole:user']],function(){
-    Route::get('/beranda',[MainController::class,'index']);
-    Route::get('/cart',[KeranjangController::class,'index']);
+    Route::get('/beranda',[MainController::class,'index'])->name('beranda');
+    Route::resource('cart',KeranjangController::class);
+    Route::post('cart/{barang:id}',[KeranjangController::class,'addToCart']);
 });
 
 

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('keranjangs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('produk_id');
+            $table->foreignId('barang_id');
             $table->double('kuantitas')->default(0);
             $table->foreignId('user_id');
             $table->timestamps();

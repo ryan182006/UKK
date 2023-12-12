@@ -17,13 +17,13 @@ class Keranjang extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function produk()
+    public function barang()
     {
-        return $this->belongsTo(Produk::class);
+        return $this->belongsTo(Barang::class);
     }
 
     public function getSubtotalAttribute()
     {
-        return $this->kuantitas * $this->produk->harga;
+        return $this->kuantitas * $this->barang->harga;
     }
 }

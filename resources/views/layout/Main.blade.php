@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Toko Online</title>
     @vite('resources/css/app.css')
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 
 <body class="bg-gray-100">
@@ -31,7 +32,7 @@
                         <li class="mr-6">
                             <a href="/cart" class="text-gray-200 text-lg font-semibold hover:text-gray-300">
                                 <span
-                                        class="inline-flex items-center justify-center w-3 h-1 p-3  text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">{{ App\Models\Keranjang::where('user_id', auth()->user()->id)->count() }}</span>
+                                        class="inline-flex items-center justify-center w-3 h-1 p-3  text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">{{ $jumlah }}</span>
                                     <svg class="w-4 h-5  float-left mt-1  text-white-600 dark:text-white" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                         <path

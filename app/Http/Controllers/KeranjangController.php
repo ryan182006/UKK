@@ -113,9 +113,14 @@ class KeranjangController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Keranjang $keranjang)
+    public function updateCart(Request $request, Keranjang $keranjang)
     {
         //
+        $keranjang = Keranjang::findOrFail($keranjang->id);
+        $keranjang->update([
+            'kuantitas' => $request->kuantitas
+        ]);
+        return back()->with('success', 'Berhasil mengubah kuantitas barang');
     }
 
     /**

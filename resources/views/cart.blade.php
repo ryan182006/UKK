@@ -35,11 +35,11 @@
                         </td>
                         <td class="text-left md:table-cell p-2">
                             <div class="text-sm text-gray-900">
-                                <form action="/cart/update/{{ $keranjang->barang->id }}" method="post">
+                                <form action="/cart/cart/{{ $keranjang->barang->id }}" method="post">
                                     @csrf
                                     @method('patch')
                                     <input type="number" min="0" max="{{ $keranjang->barang->stock }}"
-                                        name="kuantitas" class="kuantitas col-lg-6" id="kuantitas"
+                                        name="kuantitas" class="kuantitas" id="kuantitas"
                                         data-id="{{ $keranjang->id }}" value="{{ $keranjang->kuantitas }}">
                                 </form>
                             </div>
@@ -73,4 +73,44 @@
             </table>
         </div>
     </div>
+
+
+
+    <script>
+        function debounce(func, timeout = 1000) {
+            let timer;
+            return (...args) => {
+                clearTimeout(timer);
+                timer = setTimeout(() => {
+                    func.apply(this, args);
+                }, timeout);
+            };
+        }
+        document.querySelectorAll('.kuantitas').forEach(item => {
+            item.addEventListener('input', debounce(function() {
+                const id = item.dataset.id;
+                const kuantitas = item.value;
+                const url = `/cart/cart/${id}`;
+                console.log(id);
+                $.ajax({
+                    url: url,
+                    method: 'post',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ @csrf_token() }}'
+                    },
+                    data: {
+                        kuantitas: kuantitas,
+                    },
+                    success: function(response) {
+                        window.location.reload();
+                    },
+                    error: function(response) {
+                       console.log(response);
+                    },
+
+                });
+            }, 1000));
+        });
+
+    </script>
 @endsection

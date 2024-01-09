@@ -80,6 +80,7 @@
                             class="h-48 w-full object-cover">
                         <div class="p-4">
                             <h2 class="text-xl font-bold mb-2">{{ $barang->nama_barang }}</h2>
+                            
                             <p class="text-gray-600 text ">{{ $barang->harga }}</p>
                             <p class="text-gray-600 mb-4">{{ $barang->stock }}</p>
                             <p class="text-gray-600 mb-4">{{ $barang->stock }}</p>

@@ -9,7 +9,8 @@
                         <h2 class="text-xl font-bold mb-2">{{ $barang->nama_barang }}</h2>
                         <p class="text-gray-600 ">{{ $barang->harga }}</p>
                         <p class="text-gray-600 mb-4">{{ $barang->stock }}</p>
-                        <p class="text-gray-600 mb-4">{{ $barang->deskripsi }}</p>
+                        <p class="text-gray-600 mb-2">{{ $barang->deskripsi }}</p>
+                        <p class="text-gray-600 mb-4">{{ $barang->berat }}<span>KG</span></p>
                         <div class="flex">
                                 <form action="/cart/{{$barang->id}}" method="POST">
                                     @csrf

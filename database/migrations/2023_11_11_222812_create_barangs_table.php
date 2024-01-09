@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('stock');
             $table->string('gambar');
             $table->string('deskripsi');
+            $table->integer('berat');
             $table->timestamps();
         });
     }

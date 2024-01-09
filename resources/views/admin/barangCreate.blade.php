@@ -12,7 +12,7 @@
         @method('POST')
         <div class="mb-4">
             <label for="nama_barang" class="block text-gray-700 font-semibold my-2">Nama barang</label>
-            <input type="text" id="nama_barang" name="nama_barang" class="w-full border border-gray-300 p-2 rounded  @error('nama_barang') is-invalid @enderror" placeholder="Masukkan Nama Barang">
+            <input required type="text" id="nama_barang" name="nama_barang" class="w-full border border-gray-300 p-2 rounded  @error('nama_barang') is-invalid @enderror" placeholder="Masukkan Nama Barang">
             
             @error('nama_barang')
             <div class="invalid-feedback">
@@ -32,8 +32,17 @@
         </div>
         <div class="mb-4">
             <label for="harga" class="block text-gray-700 font-semibold mb-2">Harga</label>
-            <input type="number" id="harga" name="harga" class="w-full border border-gray-300 p-2 rounded  @error('harga') is-invalid @enderror" placeholder="Masukkan Harga">
+            <input required type="number" id="harga" name="harga" class="w-full border border-gray-300 p-2 rounded  @error('harga') is-invalid @enderror" placeholder="Masukkan Harga">
             @error('harga')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>
+        <div class="mb-4">
+            <label for="berat" class="block text-gray-700 font-semibold mb-2">Berat</label>
+            <input required type="number" id="berat" name="berat" class="w-full border border-gray-300 p-2 rounded  @error('berat') is-invalid @enderror" placeholder="Masukkan Berat">
+            @error('berat')
             <div class="invalid-feedback">
                 {{ $message }}
             </div>

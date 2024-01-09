@@ -14,6 +14,8 @@ class KeranjangController extends Controller
      */
     public function index()
     {
+        
+        $jum_barang = Keranjang::where('user_id', auth()->user()->id)->count();
         $keranjangs = Keranjang::where('user_id', auth()->user()->id)->with(['barang'])->get();
         $total = 0;
         foreach ($keranjangs as $keranjang) {
@@ -21,7 +23,8 @@ class KeranjangController extends Controller
         }
         return view('cart', [
             'keranjangs' => $keranjangs,
-            'total' => $total
+            'total' => $total,
+            'jumlah' =>$jum_barang
         ]);
     }
 

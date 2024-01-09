@@ -7,6 +7,8 @@
     <title>Toko Online</title>
     @vite('resources/css/app.css')
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}">
+    </script>
 </head>
 
 <body class="bg-gray-100">
@@ -20,14 +22,14 @@
                 <div class="hidden md:block">
                     <ul class="list-none flex flex-row mt-4 md:mt-0">
                         <li class="mr-6">
-                            <a href="" class="text-gray-200 text-lg font-semibold hover:text-gray-300">Toko</a>
+                            <a href="{{route('beranda')}}" class="text-gray-200 text-lg font-semibold hover:text-gray-300">Toko</a>
                         </li>
                         <li class="mr-6">
-                            <a href="" class="text-gray-200 text-lg font-semibold hover:text-gray-300">Tentang
+                            <a href="{{route('beranda')}}" class="text-gray-200 text-lg font-semibold hover:text-gray-300">Tentang
                                 Kami</a>
                         </li>
                         <li class="mr-6">
-                            <a href="" class="text-gray-200 text-lg font-semibold hover:text-gray-300">Kontak</a>
+                            <a href="{{route('beranda')}}" class="text-gray-200 text-lg font-semibold hover:text-gray-300">Kontak</a>
                         </li>
                         <li class="mr-6">
                             <a href="/cart" class="text-gray-200 text-lg font-semibold hover:text-gray-300">
@@ -73,8 +75,8 @@
                     <div id="dropdownMenu"
                         class="absolute right-0 w-48 mt-2 bg-white border border-gray-200 rounded-lg shadow-md hidden">
                         <div class="py-1">
-                            <a href="" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Toko</a>
-                            <a href="" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tentang
+                            <a href="{{route('beranda')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Toko</a>
+                            <a href="{{route('beranda')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tentang
                                 Kami</a>
                             <a href="" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Kontak
                             </a>
@@ -117,7 +119,27 @@
         </div>
     </footer>
 
+    <!-- bootstrap -->
+   
+    <!-- count down -->
+    {{-- <script src="{{ asset('assets2/js/jquery.countdown.js') }}"></script> --}}
+    <!-- isotope -->
+    {{-- <script src="{{ asset('assets2/js/jquery.isotope-3.0.6.min.js') }}"></script> --}}
+    <!-- waypoints -->
+    {{-- <script src="{{ asset('assets2/js/waypoints.js') }}"></script> --}}
+    <!-- owl carousel -->
+    {{-- <script src="{{ asset('assets2/js/owl.carousel.min.js') }}"></script> --}}
+    <!-- magnific popup -->
+    {{-- <script src="{{ asset('assets2/js/jquery.magnific-popup.min.js') }}"></script> --}}
+    {{-- <!-- mean menu -->
+    <script src="{{ asset('assets2/js/jquery.meanmenu.min.js') }}"></script> --}}
+    <!-- sticker js -->
+    {{-- <script src="{{ asset('assets2/js/sticker.js') }}"></script> --}}
+    <!-- main js -->
+    {{-- <script src="{{ asset('assets2/js/main.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script> --}}
 
+    @yield('script')
     <script>
         var dropdown = document.getElementById('dropdownMenuButton');
         var dropdownMenu = document.getElementById('dropdownMenu');

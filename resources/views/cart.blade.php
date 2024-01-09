@@ -71,46 +71,52 @@
                     <td class="text-right text-gray-900 font-bold">Rp.{{ number_format($total) }}</td>
                 </tr>
             </table>
+            <div class=" flex items-center justify-center">
+                <a href="/checkout" class="bg-blue-600 rounded-lg p-3">Check Out</a>
+            </div>
         </div>
     </div>
-
-
-
-    <script>
-        function debounce(func, timeout = 1000) {
-            let timer;
-            return (...args) => {
-                clearTimeout(timer);
-                timer = setTimeout(() => {
-                    func.apply(this, args);
-                }, timeout);
-            };
-        }
-        document.querySelectorAll('.kuantitas').forEach(item => {
-            item.addEventListener('input', debounce(function() {
-                const id = item.dataset.id;
-                const kuantitas = item.value;
-                const url = `/cart/cart/${id}`;
-                console.log(id);
-                $.ajax({
-                    url: url,
-                    method: 'post',
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ @csrf_token() }}'
-                    },
-                    data: {
-                        kuantitas: kuantitas,
-                    },
-                    success: function(response) {
-                        window.location.reload();
-                    },
-                    error: function(response) {
-                       console.log(response);
-                    },
-
-                });
-            }, 1000));
-        });
-
-    </script>
+    
+    
 @endsection
+
+@section('script')
+<script>
+    function debounce(func, timeout = 1000) {
+        let timer;
+        return (...args) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => {
+                func.apply(this, args);
+            }, timeout);
+        };
+    }
+    document.querySelectorAll('.kuantitas').forEach(item => {
+        item.addEventListener('input', debounce(function() {
+            const id = item.dataset.id;
+            const kuantitas = item.value;
+            const url = `/cart/cart/${id}`;
+            console.log(id);
+            $.ajax({
+                url: url,
+                method: 'post',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ @csrf_token() }}'
+                },
+                data: {
+                    kuantitas: kuantitas,
+                },
+                success: function(response) {
+                    window.location.reload();
+                },
+                error: function(response) {
+                   console.log(response);
+                },
+
+            });
+        }, 1000));
+    });
+
+</script>
+@endsection
+

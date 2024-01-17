@@ -1,6 +1,19 @@
 @extends('layout.Main')
 @section('content')
     <div class="container mx-auto">
+        <div>
+            @if (session('success'))
+            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <span class="font-medium">{{session('success')}}</span> 
+              </div>
+            @endif
+            @if (session('error'))
+                <div class=" mb-3 col-lg-12 text-center" role="alert">
+                    {{ session('error') }}
+                </div>
+            @endif
+        </div>
+    
         <a href="{{ route('beranda') }}"><button
                 class="text-xl font-bold mb-4 bg-stone-500 p-2 rounded-lg text-white">Back</button></a>
         <h1 class="text-4xl font-bold mb-4">Shopping Cart</h1>

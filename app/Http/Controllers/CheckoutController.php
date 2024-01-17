@@ -160,7 +160,10 @@ class CheckoutController extends Controller
      */
     public function show(Checkout $checkout)
     {
-        //
+        $checkout = Checkout::with(['alamats', 'pesanan'])->find($checkout->id);
+        $snapToken = $checkout->snap_token;
+
+        return view('DetailPesanan', compact('snapToken', 'checkout'));
     }
 
     /**

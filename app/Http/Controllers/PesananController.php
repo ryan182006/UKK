@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use App\Models\Checkout;
+use App\Models\Keranjang;
 use App\Models\Pesanan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class PesananController extends Controller
 {
@@ -13,8 +16,10 @@ class PesananController extends Controller
      */
     public function index()
     {
+        $jum_barang = Keranjang::where('user_id', auth()->user()->id)->count();
         $checkouts = Checkout::where('user_id', auth()->user()->id)->with(['alamat', 'user', 'pesanans'])->orderBy('payment_status', 'ASC')->get();
-        return view('landingpage.pesanans', [
+        return view('pesanan', [
+            'jumlah' => $jum_barang,
             'checkouts' => $checkouts,
         ]);
     }
@@ -22,51 +27,53 @@ class PesananController extends Controller
     public function detailPesanan(Checkout $checkout)
     {
         $checkout = Checkout::where('id', $checkout->id)->with(['alamat', 'user', 'pesanans'])->first();
+        $jum_barang = Keranjang::where('user_id', auth()->user()->id)->count();
 
-        return view('landingpage.detailPesanan', [
+        return view('DetailPesanan', [
             'checkout' => $checkout,
+            'jumlah' => $jum_barang,
         ]);
     }
 
     public function belumDibayar()
     {
         $checkouts = Checkout::where('payment_status', '1')->latest()->get();
-        return view('adminpage.components.pesananStatus.belumDibayar', [
+        return view('PesananBelumbayar', [
             'checkouts' => $checkouts
         ]);
     }
     public function menungguKonfirmasi()
     {
         $checkouts = Checkout::where('status', '1')->latest()->get();
-        return view('adminpage.components.pesananStatus.menunggu', [
+        return view('admin.MenungguKonfirmasi', [
             'checkouts' => $checkouts
         ]);
     }
     public function diproses()
     {
         $checkouts = Checkout::where('status', '2')->latest()->get();
-        return view('adminpage.components.pesananStatus.diproses', [
+        return view('admin.DiProses', [
             'checkouts' => $checkouts
         ]);
     }
     public function dikirim()
     {
         $checkouts = Checkout::where('status', '3')->latest()->get();
-        return view('adminpage.components.pesananStatus.dikirim', [
+        return view('admin.DiKirim', [
             'checkouts' => $checkouts
         ]);
     }
     public function selesai()
     {
         $checkouts = Checkout::withTrashed()->where('status', '4')->latest()->get();
-        return view('adminpage.components.pesananStatus.selesai', [
+        return view('admin.PesananSelesai', [
             'checkouts' => $checkouts,
         ]);
     }
     public function dibatalkan()
     {
         $checkouts = Checkout::withTrashed()->where('status', '5')->latest()->get();
-        return view('adminpage.components.pesananStatus.batal', [
+        return view('admin.PesananDiBatalkan', [
             'checkouts' => $checkouts,
         ]);
     }
@@ -75,7 +82,7 @@ class PesananController extends Controller
     {
         $checkout = Checkout::where('id', $checkout->id)->with(['alamat', 'user', 'pesanans'])->first();
 
-        return view('adminPage.components.pesananAdmin.detailPesanan', [
+        return view('DetailPesanansAdmin', [
             'checkout' => $checkout,
         ]);
     }

@@ -86,6 +86,13 @@ class CheckoutController extends Controller
     public function create()
     {
         //
+        $user = auth()->user();
+
+        $orderpanding = Checkout::with(['pesanans','user'])
+        ->where('user_id',$user->id)
+        ->where('payment_status','1')->get();
+        return view('pesananpanding',[
+        'orderpanding' =>$orderpanding]);
     }
 
     /**
@@ -139,6 +146,7 @@ class CheckoutController extends Controller
 
             Keranjang::destroy($keranjang->id);
         }
+        
 
         $checkout = Checkout::with(['pesanans'])->where('id', $checkout->id)->first();
 
@@ -154,6 +162,9 @@ class CheckoutController extends Controller
             'snap_token' => $snapToken,
         ]);
     }
+
+    
+
 
     /**
      * Display the specified resource.
@@ -185,8 +196,9 @@ class CheckoutController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Checkout $checkout)
+    public function destroy(Request $request)
     {
         //
+        
     }
 }

@@ -18,52 +18,52 @@
                     @if ($checkouts->count() > 0)
                         @foreach ($checkouts as $checkout)
                             <tr>
-                                <th scope="row" class="py-2">{{ $loop->iteration }}</th>
-                                <td class="py-2">{{ $checkout->alamat->nama_penerima }}</td>
-                                <td class="py-2">{{ $checkout->alamat->alamat }}, Surabaya</td>
-                                <td class="py-2">Rp. {{ number_format($checkout->total) }}</td>
-                                <td class="py-2">
+                                <td scope="row" class="py-2 text-center">{{ $loop->iteration }}</td>
+                                <td class="py-2 text-center">{{ $checkout->alamat->nama_penerima }}</td>
+                                <td class="py-2 text-center">{{ $checkout->alamat->alamat }}, Surabaya</td>
+                                <td class="py-2 text-center">Rp. {{ number_format($checkout->total) }}</td>
+                                <td class="py-2 text-center text-white  ">
                                     @if ($checkout->payment_status == '1' && $checkout->status == '5')
-                                        <h5><span class="badge bg-red-500">Dibatalkan</span></h5>
+                                        <span class="badge bg-red-500 p-1 text-center my-2 rounded-lg">Dibatalkan</span>
                                     @elseif ($checkout->payment_status == '1')
-                                        <h5><span class="badge bg-yellow-500">Belum Dibayar</span></h5>
+                                        <span class="badge bg-yellow-500">Belum Dibayar</span>
                                     @elseif($checkout->payment_status == '2')
                                         @if ($checkout->status == '1')
-                                            <h5><span class="badge bg-gray-800">Menunggu Konfirmasi</span></h5>
+                                            <span class="badge bg-gray-800 p-1 text-center my-2 rounded-lg">Menunggu Konfirmasi</span>
                                         @elseif($checkout->status == '2')
-                                            <h5><span class="badge bg-gray-700">Diproses</span></h5>
+                                            <span class="badge bg-gray-700">Diproses</span>
                                         @elseif($checkout->status == '3')
-                                            <h5><span class="badge bg-blue-500 text-white">Dikirim</span></h5>
+                                            <span class="badge bg-blue-500 rounded-lg p-1 text-white">Dikirim</span>
                                         @elseif($checkout->status == '4')
-                                            <h5><span class="badge bg-green-500">Selesai</span></h5>
+                                            <span class="badge bg-green-500 rounded-lg p-1">Selesai</span>
                                         @endif
                                     @else
-                                        <h5><span class="badge bg-red-500">Kadaluarsa</span></h5>
+                                        <span class="badge bg-red-500 rounded-lg p-1">Kadaluarsa</span>
                                     @endif
                                 </td>
-                                <td class="py-2 flex justify-center">
+                                <td class="py-2 text-center">
                                     @if ($checkout->payment_status != '3' && $checkout->status != '5')
-                                        <a href="/pesanan/{{ $checkout->id }}" class="btn btn-primary">Detail</a>
+                                        <a href="/pesanan/{{ $checkout->id }}" class="p-1 bg-yellow-300 rounded-lg  mx-2">Detail</a>
                                     @endif
                                     @if ($checkout->status == '5' || $checkout->payment_status == '3' || $checkout->status == '4')
-                                        <form action="/changeStatus/{{ $checkout->id }}" method="post" class="ms-2">
+                                        <form action="/changeStatus/{{ $checkout->id }}" method="post" class="inline-block">
                                             @csrf
                                             <input type="hidden" name="action" value="hapus">
-                                            <button type="submit" class="btn btn-danger">Hapus</button>
+                                            <button type="submit" class="bg-red-500 rounded-lg p-1 text-teal-50 mx-2">Hapus</button>
                                         </form>
                                     @endif
                                     @if ($checkout->payment_status == '1' && $checkout->status != '5')
-                                        <form action="/changeStatus/{{ $checkout->id }}" method="post" class="ms-2">
+                                        <form action="/changeStatus/{{ $checkout->id }}" method="post" class="inline-block">
                                             @csrf
                                             <input type="hidden" name="action" value="batal">
-                                            <button type="submit" class="btn btn-danger">Batalkan</button>
+                                            <button type="submit" class="btn btn-danger mx-2">Batalkan</button>
                                         </form>
                                     @endif
                                     @if ($checkout->status == '3')
-                                        <form action="/changeStatus/{{ $checkout->id }}" method="post" class="ms-2">
+                                        <form action="/changeStatus/{{ $checkout->id }}" method="post" class="inline-block">
                                             @csrf
                                             <input type="hidden" name="action" value="terima">
-                                            <button type="submit" class="btn btn-success">Diterima</button>
+                                            <button type="submit" class="bg-green-400 rounded-lg mx-2">Diterima</button>
                                         </form>
                                     @endif
                                 </td>
@@ -71,7 +71,7 @@
                         @endforeach
                     @else
                         <tr>
-                            <td colspan="6" class="py-2">Anda Belum Memesan</td>
+                            <td colspan="6" class="py-2 text-center">Anda Belum Memesan</td>
                         </tr>
                     @endif
                 </tbody>

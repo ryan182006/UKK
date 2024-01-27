@@ -6,7 +6,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
     <title>Admin Panel</title>
-    @vite('resources/css/app.css')
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    @vite('resources/css/app.css') 
 
 </head>
 <style>
@@ -122,7 +125,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="user"
+                        <a href="/user"
                             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -193,7 +196,7 @@
 
     @yield('script')
 
-    <script>
+    {{-- <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Get all elements with class 'group' (menu items with dropdown)
         var dropdowns = document.querySelectorAll('.group');
@@ -213,7 +216,7 @@
             });
         });
     });
-</script>
+</script> --}}
 </body>
 
 </html>

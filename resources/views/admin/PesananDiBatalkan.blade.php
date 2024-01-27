@@ -31,11 +31,11 @@
                                 <td class="py-2 px-4 border-b text-center">Rp. {{ number_format($checkout->total) }}</td>
                                 <td class="py-2 px-4 border-b text-center">
                                         @if ($checkout->status == '5')
-                                        <h5><span class="badge bg-secondary text-light">Di Batalkan</span></h5>
+                                        <h5><span class="badge bg-red-300 p-1 rounded-lg text-black">Di Batalkan</span></h5>
                                         @endif
                                 </td>
                         <td class="py-2 px-4 border-b text-center space-x-2">
-                            <a href="/pesanan/admin/{{ $checkout->id }}" class="btn btn-primary btn-sm">Detail</a>
+                            <a href="/pesanan/admin/{{ $checkout->id }}" class="bg-yellow-300 p-3  px-2 py-1 rounded-lg">Detail</a>
                         </td>
                         </tr>
                         @endforeach

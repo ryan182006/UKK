@@ -1,7 +1,7 @@
 @extends('layout.Main')
 @section('content')
     <!-- end breadcrumb section -->
-    <div class="checkout-section mt-16 mb-16 flex justify-between">
+    <div class="checkout-section mt-16 mb-16 flex justify-between bg-white p-6 rounded-xl shadow-lg">
         <div class="w-[48%]">
             <p class="font-bold text-lg">PERHATIAN!!!</p>
             <p class="text-gray-500">Kami tidak memproses pesanan diluar Surabaya, Harap memeriksa kembali
@@ -9,18 +9,18 @@
             @include('partials.modals.daftarAlamat')
             <!-- Address Section -->
             <div class="mb-4">
-                <button id="accordionButton" class="w-[50%] my-2 bg-blue-500 text-white py-2 px-4 mb-2">
-                    <label for="alamat" class="block text-gray-700 font-bold mb-2">Alamat Pengiriman:</label>
+                <button id="accordionButton" class="w-[97%] my-2 bg-blue-500 text-white py-2 px-4 mb-2">
+                    <label for="alamat" class="block text-white  mb-2">Alamat Pengiriman:</label>
                     
                 </button>
 
                 <!-- Accordion Content -->
-                <div id="accordionContent" class="hidden bg-gray-100 p-4">
-                    <form class="w-[50%]" action="/pembayaran" method="post">
+                <div id="accordionContent" class="hidden p-4">
+                    <form class="w-full" action="/pembayaran" method="post">
                         @csrf
                         <div class="mb-4">
                             @if ($daftar_alamats->count() > 0)
-                                <label for="daftar_alamat_id" class="block text-gray-700 font-bold mb-2">Alamat:</label>
+                                <label for="daftar_alamat_id" class="block  mb-2">Alamat:</label>
                                 <select id="daftar_alamat_id" name="daftar_alamat_id" class="w-full p-2 border rounded">
                                     <option value="">-- Pilih Alamat Tujuan --</option>
                                     @foreach ($daftar_alamats as $daftar_alamat)
@@ -109,7 +109,7 @@
                 </tbody>
             </table>
             @if ($daftar_alamats->count() > 0)
-                <button type="submit" class="boxed-btn">PESAN SEKARANG</button>
+                <button type="submit" class="bg-green-500 text-white hover:bg-green-200 hover:text-black p-2 my-2 rounded-lg">PESAN SEKARANG</button>
             @endif
         </div>
         </form>

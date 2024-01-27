@@ -10,6 +10,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\OngkirController;
 use App\Http\Controllers\PaymentCallbackController;
+use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
@@ -50,6 +51,7 @@ Route::group(['middleware' => ['auth', 'ChekRole:admin']], function () {
     Route::get('/pesanan-admin/selesai', [PesananController::class, 'selesai']);
     Route::get('/pesanan-admin/dibatalkan', [PesananController::class, 'dibatalkan']);
     Route::get('/pesanan/admin/{checkout:id}', [PesananController::class, 'detailPesananAdmin']);
+    Route::get('/cetak-pdf', [PenjualanController::class, 'cetakPdf']);
 });
 
 Route::post('/changeStatus/{checkout:id}', [PesananController::class, 'changeStatus'])->middleware('auth');
@@ -68,6 +70,7 @@ Route::group(['middleware' => ['auth', 'ChekRole:user']], function () {
     Route::post('pembayaran', [CheckoutController::class, 'pembayaran']);
     Route::get('pesanan', [PesananController::class, 'index']);
     Route::get('/pesanan/{checkout:id}', [PesananController::class, 'detailPesanan']);
+    Route::get('/pesanan/panding', [CheckoutController::class, 'create']);
 });
 
 

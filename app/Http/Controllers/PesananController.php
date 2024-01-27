@@ -81,9 +81,9 @@ class PesananController extends Controller
     public function detailPesananAdmin(Checkout $checkout)
     {
         $checkout = Checkout::where('id', $checkout->id)->with(['alamat', 'user', 'pesanans'])->first();
-
-        return view('DetailPesanansAdmin', [
+        return view('admin.DetailPesanansAdmin', [
             'checkout' => $checkout,
+
         ]);
     }
 

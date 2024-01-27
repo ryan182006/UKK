@@ -14,7 +14,7 @@ class Checkout extends Model
 
     public function alamat()
     {
-        return $this->belongsTo(Alamat::class);
+        return $this->belongsTo(Alamat::class,);
     }
 
     public function pesanans()

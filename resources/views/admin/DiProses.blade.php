@@ -32,15 +32,15 @@
                         <td class="py-2 px-4 border-b text-center">Rp. {{ number_format($checkout->total) }}</td>
                         <td class="py-2 px-4 border-b text-center">
                             @if ($checkout->status == '2')
-                            <h5><span class="badge bg-secondary text-light">Diproses</span></h5>
+                            <h5><span class="badge bg-gray-300 text-light">Diproses</span></h5>
                             @endif
                         </td>
                         <td class="py-2 px-4 border-b text-center space-x-2">
-                            <a href="/pesanan/admin/{{ $checkout->id }}" class="btn btn-primary btn-sm">Detail</a>
+                            <a href="/pesanan/admin/{{ $checkout->id }}" class="bg-yellow-300 p-3  px-2 py-1 rounded-lg">Detail</a>
                             <form action="/changeStatus/{{ $checkout->id }}" method="post" class="inline-block">
                                 @csrf
                                 <input type="hidden" name="action" value="kirim">
-                                <button type="submit" class="btn btn-success btn-sm">Kirim</button>
+                                <button type="submit" class="bg-blue-300 p-3  px-2 py-1 rounded-lg">Kirim</button>
                             </form>
                         </td>
                     </tr>

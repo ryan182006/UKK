@@ -12,7 +12,7 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="min-w-full bg-white border border-gray-300">
+            <table class="min-w-full bg-white border-2 border-gray-300">
                 <thead>
                     <tr>
                         <th class="py-2 px-4 border-b">No</th>
@@ -26,21 +26,21 @@
                 <tbody>
                     @foreach ($checkouts as $checkout)
                     <tr>
-                        <td class="py-2 px-4 border-b">{{ $loop->iteration }}</td>
-                        <td class="py-2 px-4 border-b">{{ $checkout->alamat->nama_penerima }}</td>
-                        <td class="py-2 px-4 border-b">{{ $checkout->alamat->alamat }}, Surabaya</td>
-                        <td class="py-2 px-4 border-b">Rp. {{ number_format($checkout->total) }}</td>
-                        <td class="py-2 px-4 border-b">
+                        <td class="py-2 px-4 border-b text-center">{{ $loop->iteration }}</td>
+                        <td class="py-2 px-4 border-b text-center">{{ $checkout->alamat->nama_penerima }}</td>
+                        <td class="py-2 px-4 border-b text-center">{{ $checkout->alamat->alamat }}, Surabaya</td>
+                        <td class="py-2 px-4 border-b text-center">Rp. {{ number_format($checkout->total) }}</td>
+                        <td class="py-2 px-4 border-b text-center">
                             @if ($checkout->status == '1')
-                            <span class="bg-dark text-black px-2 py-1 rounded-full">Menunggu Konfirmasi</span>
+                            <span class="bg-green-100 text-black px-2 py-1 rounded-full">Menunggu Konfirmasi</span>
                             @endif
                         </td>
-                        <td class="py-2 px-4 border-b">
-                            <a href="/pesanan/admin/{{ $checkout->id }}" class="btn btn-primary btn-sm">Detail</a>
+                        <td class="py-2 px-z border-b text-center">
+                            <a href="/pesanan/admin/{{ $checkout->id }}" class="bg-yellow-300 p-3  px-2 py-1 rounded-lg ">Detail</a>
                             <form action="/changeStatus/{{ $checkout->id }}" method="post" class="inline-block">
                                 @csrf
                                 <input type="hidden" name="action" value="konfirmasi">
-                                <button type="submit" class="btn btn-success btn-sm">Konfirmasi</button>
+                                <button type="submit" class="bg-blue-300 p-3  px-2 py-1 rounded-lg">Konfirmasi</button>
                             </form>
                         </td>
                     </tr>

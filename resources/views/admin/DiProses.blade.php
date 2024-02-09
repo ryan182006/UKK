@@ -32,7 +32,7 @@
                         <td class="py-2 px-4 border-b text-center">Rp. {{ number_format($checkout->total) }}</td>
                         <td class="py-2 px-4 border-b text-center">
                             @if ($checkout->status == '2')
-                            <h5><span class="badge bg-gray-300 text-light">Diproses</span></h5>
+                            <h5><span class="badge bg-gray-300 rounded-lg px-2 py-1 text-light">Diproses</span></h5>
                             @endif
                         </td>
                         <td class="py-2 px-4 border-b text-center space-x-2">

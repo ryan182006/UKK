@@ -35,9 +35,9 @@
                             <span class="bg-green-100 text-black px-2 py-1 rounded-full">Menunggu Konfirmasi</span>
                             @endif
                         </td>
-                        <td class="py-2 px-z border-b text-center">
-                            <a href="/pesanan/admin/{{ $checkout->id }}" class="bg-yellow-300 p-3  px-2 py-1 rounded-lg ">Detail</a>
-                            <form action="/changeStatus/{{ $checkout->id }}" method="post" class="inline-block">
+                        <td class="py-2 px-z border-b text-center ">
+                            <a href="/pesanan/admin/{{ $checkout->id }}" class="bg-yellow-300 p-3   px-2 py-1 rounded-lg ">Detail</a>
+                            <form action="/changeStatus/{{ $checkout->id }}" method="post" class="inline-block my-1">
                                 @csrf
                                 <input type="hidden" name="action" value="konfirmasi">
                                 <button type="submit" class="bg-blue-300 p-3  px-2 py-1 rounded-lg">Konfirmasi</button>

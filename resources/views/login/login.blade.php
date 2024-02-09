@@ -25,13 +25,13 @@
                         class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-indigo-200">
                 </div>
 
-                <div class="mb-4">
+                {{-- <div class="mb-4">
                     <label class="flex items-center">
                         <input type="checkbox" name="remember"
                             class="text-indigo-600 border-gray-300 focus:ring focus:ring-indigo-200 rounded">
                         <span class="ml-2 text-sm text-gray-600">Remember Me</span>
                     </label>
-                </div>
+                </div> --}}
 
                 <div class="mb-6">
                     <button type="submit"

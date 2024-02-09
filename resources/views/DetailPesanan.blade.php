@@ -1,5 +1,6 @@
 @extends('layout.Main')
 @section('content')
+<div class="container mx-auto px-6 py-16">
 <div class="product-section my-5 mt-16 mb-16">
     <div class="container">
         @if (session('success'))
@@ -145,6 +146,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 
 

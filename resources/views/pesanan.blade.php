@@ -1,9 +1,12 @@
 @extends('layout.main')
 @section('content')
+
+<div class="container mx-auto px-6 py-16">
+<p class="text-center mt-4 my-3">Riwayat belanja.</p>
 <section class="shopping-cart spad">
     <div class="container">
         <div class="table-responsive">
-            <table class="min-w-full bg-white border border-gray-300">
+            <table class="min-w-full bg-white border-2 border-gray-300">
                 <thead class="bg-gray-100">
                     <tr>
                         <th scope="col" class="py-2 text-center">#</th>
@@ -22,18 +25,18 @@
                                 <td class="py-2 text-center">{{ $checkout->alamat->nama_penerima }}</td>
                                 <td class="py-2 text-center">{{ $checkout->alamat->alamat }}, Surabaya</td>
                                 <td class="py-2 text-center">Rp. {{ number_format($checkout->total) }}</td>
-                                <td class="py-2 text-center text-white  ">
+                                <td class="py-2 text-center text-black  ">
                                     @if ($checkout->payment_status == '1' && $checkout->status == '5')
                                         <span class="badge bg-red-500 p-1 text-center my-2 rounded-lg">Dibatalkan</span>
                                     @elseif ($checkout->payment_status == '1')
                                         <span class="badge bg-yellow-500">Belum Dibayar</span>
                                     @elseif($checkout->payment_status == '2')
                                         @if ($checkout->status == '1')
-                                            <span class="badge bg-gray-800 p-1 text-center my-2 rounded-lg">Menunggu Konfirmasi</span>
+                                            <span class="badge bg-gray-200 p-1 text-center my-2 rounded-lg">Menunggu Konfirmasi</span>
                                         @elseif($checkout->status == '2')
-                                            <span class="badge bg-gray-700">Diproses</span>
+                                            <span class="badge bg-gray-200 rounded-lg p-1">Diproses</span>
                                         @elseif($checkout->status == '3')
-                                            <span class="badge bg-blue-500 rounded-lg p-1 text-white">Dikirim</span>
+                                            <span class="badge bg-gray-200 rounded-lg p-1">Dikirim</span>
                                         @elseif($checkout->status == '4')
                                             <span class="badge bg-green-500 rounded-lg p-1">Selesai</span>
                                         @endif
@@ -49,7 +52,7 @@
                                         <form action="/changeStatus/{{ $checkout->id }}" method="post" class="inline-block">
                                             @csrf
                                             <input type="hidden" name="action" value="hapus">
-                                            <button type="submit" class="bg-red-500 rounded-lg p-1 text-teal-50 mx-2">Hapus</button>
+                                            <button type="submit" class="bg-red-500 rounded-lg p-1 text-light-50 mx-2">Hapus</button>
                                         </form>
                                     @endif
                                     @if ($checkout->payment_status == '1' && $checkout->status != '5')
@@ -63,7 +66,7 @@
                                         <form action="/changeStatus/{{ $checkout->id }}" method="post" class="inline-block">
                                             @csrf
                                             <input type="hidden" name="action" value="terima">
-                                            <button type="submit" class="bg-green-400 rounded-lg mx-2">Diterima</button>
+                                            <button type="submit" class="bg-green-400 rounded-lg p-1 mx-2">Diterima</button>
                                         </form>
                                     @endif
                                 </td>
@@ -79,4 +82,5 @@
         </div>
     </div>
 </section>
+</div>
 @endsection

@@ -1,5 +1,6 @@
 @extends('layout.Main')
 @section('content')
+<div class="container mx-auto px-6 py-16">
 <div class="container my-5 bg-white rounded-xl shadow-lg">
     <div class="card p-4 rounded-lg">
         <div class="card-body">
@@ -17,7 +18,7 @@
                     </div>
                 </div>
                 <div class="lg:w-1/2">
-                    <div class="card bg-red-100 border-none rounded-lg shadow-md m-4">
+                    <div class="card bg-white border-2 rounded-lg shadow-md m-4">
                         <div class="card-body">
                             <div class="card-details">
                                 <table class="table text-center w-full border">
@@ -63,6 +64,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 
 @endsection

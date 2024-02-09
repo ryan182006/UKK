@@ -16,6 +16,6 @@ class ChekRole
         if(in_array($request->user()->role,$chekRoles)){
             return $next($request);
         }
-        return redirect('/beranda');
+        return redirect('/home');
     }
 }

@@ -1,7 +1,7 @@
 @extends('layout.users')
 @section('content')
     <div class="min-h-screen flex items-center justify-center">
-        <div class="w-full max-w-md p-6  bg-emerald-200 rounded-lg shadow-md">
+        <div class="w-full max-w-md p-6   rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">Register</h2>
             @if(session('message'))
             <div class="mb-4 rounded-lg bg-orange-50 px-6 py-5 text-base text-red-600" role="alert">

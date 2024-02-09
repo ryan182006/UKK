@@ -53,7 +53,7 @@
                         </a>
                     </div>
                     <div class="flex float-left ml-5">
-                        <form action="" method="POST" class="d-inline">
+                        <form action="/user/{{$user->id}}" method="POST" class="d-inline">
                             @method('delete')
                             @csrf
                             <button class="" title="Hapus" onclick="return confirm('Apakah anda yakin ingin menghapus?')"><svg class="w-6 h-6 text-red-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">

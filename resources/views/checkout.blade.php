@@ -1,6 +1,7 @@
 @extends('layout.Main')
 @section('content')
     <!-- end breadcrumb section -->
+    <div class="container mx-auto px-6 py-16">
     <div class="checkout-section mt-16 mb-16 flex justify-between bg-white p-6 rounded-xl shadow-lg">
         <div class="w-[48%]">
             <p class="font-bold text-lg">PERHATIAN!!!</p>
@@ -109,10 +110,11 @@
                 </tbody>
             </table>
             @if ($daftar_alamats->count() > 0)
-                <button type="submit" class="bg-green-500 text-white hover:bg-green-200 hover:text-black p-2 my-2 rounded-lg">PESAN SEKARANG</button>
+                <button type="submit" class="bg-green-500 text-white p-2 my-2 rounded-lg">PESAN SEKARANG</button>
             @endif
         </div>
         </form>
+    </div>
     </div>
     @endsection
 

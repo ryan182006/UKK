@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class BarangController extends Controller
@@ -17,6 +18,22 @@ class BarangController extends Controller
             'barangs' => Barang::all(),
         ]);
     }
+
+    public function search(Request $request)
+{
+	$search = $request->input('search');
+
+        $barangs = Barang::when($search, function ($query) use ($search) {
+            $query->where('nama_barang', 'like', '%' . $search . '%')
+                  ->orWhere('deskripsi', 'like', '%' . $search . '%');
+        })->paginate(10);
+        if ($search && $barangs->isEmpty()) {
+            return redirect()->route('cari')->with('error', 'Product not found.');
+        }
+
+        return view('admin.barang', compact('barangs', 'search',));
+ 
+}
 
     /**
      * Show the form for creating a new resource.
@@ -37,7 +54,7 @@ class BarangController extends Controller
             'stock' => 'required',
             'deskripsi' => 'required',
             'berat' => 'required',
-            'gambar' => 'image|file',
+            'gambar' => 'required|image|file',
         ]);
         if ($request->file('gambar')) {
             $validatedData['gambar'] = $request->file('gambar')->store('gambar',);

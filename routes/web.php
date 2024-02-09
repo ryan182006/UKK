@@ -43,6 +43,7 @@ Route::post('/register', [RegisterController::class, 'register'])->name('createR
 Route::group(['middleware' => ['auth', 'ChekRole:admin']], function () {
     Route::get('/admin', [AdminController::class, 'index']);
     Route::resource('barang', BarangController::class);
+    Route::get('/barang', [BarangController::class, 'search'])->name('cari');
     Route::resource('user', UserController::class);
     Route::get('/pesanan-admin/belum-dibayar', [PesananController::class, 'belumDibayar']);
     Route::get('/pesanan-admin/menunggu-konfirmasi', [PesananController::class, 'menungguKonfirmasi']);
@@ -58,7 +59,8 @@ Route::post('/changeStatus/{checkout:id}', [PesananController::class, 'changeSta
 
 // user
 Route::group(['middleware' => ['auth', 'ChekRole:user']], function () {
-    Route::get('/beranda', [MainController::class, 'index'])->name('beranda');
+    Route::get('/home', [MainController::class, 'index'])->name('home');
+    Route::get('/shop', [MainController::class, 'toko'])->name('shop');
     Route::resource('cart', KeranjangController::class);
     Route::post('cart/{barang:id}', [KeranjangController::class, 'addToCart']);
     Route::delete('cart/cart/{keranjang:id}', [KeranjangController::class, 'destroy']);

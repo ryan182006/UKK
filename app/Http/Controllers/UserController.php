@@ -19,6 +19,13 @@ class UserController extends Controller
             'users'=> User::all()
         ]);
     }
+    
+    public function ViewProfile()
+    {
+        return view('ViewProfile',[
+            
+        ]);
+    }
 
     /**
      * Show the form for creating a new resource.

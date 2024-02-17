@@ -30,7 +30,7 @@ class CreateSnapTokenService extends Midtrans
         }
         array_push($barang, [
             'id' => $this->checkout->id,
-            'price' => 7000,
+            'price' => $this->checkout->ongkir,
             'quantity' => 1,
             'name' => "ongkir"
         ]);

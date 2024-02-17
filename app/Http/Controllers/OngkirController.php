@@ -6,6 +6,7 @@ use App\Models\Alamat;
 use App\Models\Keranjang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class OngkirController extends Controller
 {
@@ -18,6 +19,7 @@ class OngkirController extends Controller
         foreach ($keranjang as $item) {
             $weight += $item->barang->berat * $item->kuantitas;
         }
+
         $response = Http::post('https://api.rajaongkir.com/starter/cost', [
             'key' => getenv('RAJA_ONGKIR_API_KEY'),
             'origin' => '444',

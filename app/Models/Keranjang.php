@@ -26,4 +26,6 @@ class Keranjang extends Model
     {
         return $this->kuantitas * $this->barang->harga;
     }
+
+    
 }

@@ -68,6 +68,7 @@ class CheckoutController extends Controller
         foreach ($keranjangs as $keranjang) {
             $total += $keranjang->subtotal;
         }
+        $ongkir = $request->input('ongkir');
 
         $catatan = $request->catatan;
         $daftar_alamats = Alamat::with(['user'])->find($request->daftar_alamat_id);
@@ -77,6 +78,7 @@ class CheckoutController extends Controller
             'total' => $total,
             'catatan' => $catatan,
             'jumlah' =>$jum_barang,
+            'ongkir' => $ongkir
         ]);
     }
 

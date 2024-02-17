@@ -44,10 +44,10 @@
                             <div class="text-sm text-gray-900">{{ $keranjang->barang->nama_barang }}</div>
                         </td>
                         <td class="text-left p-2">
-                            <div class="text-sm text-gray-900">{{ $keranjang->barang->deskripsi }}</div>
+                            <div class="text-sm text-gray-900">{{ $keranjang->barang->berat * $keranjang->kuantitas }} Gram</div>
                         </td>
                         <td class="text-left p-2">
-                            <div class="text-sm text-gray-900">{{ $keranjang->barang->harga }}</div>
+                            <div class="text-sm text-gray-900">{{number_format($keranjang->barang->harga) }}</div>
                         </td>
                         <td class="text-left p-2 ">
                             <div class="text-sm text-gray-900">

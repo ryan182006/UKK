@@ -6,6 +6,7 @@ use App\Models\Barang;
 use App\Models\Keranjang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class KeranjangController extends Controller
 {
@@ -121,7 +122,7 @@ class KeranjangController extends Controller
         //
         $keranjang = Keranjang::findOrFail($keranjang->id);
         $keranjang->update([
-            'kuantitas' => $request->kuantitas
+            'kuantitas' => $request->kuantitas,
         ]);
         return back()->with('success', 'Berhasil mengubah kuantitas barang');
     }

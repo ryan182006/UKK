@@ -57,7 +57,7 @@ class BarangController extends Controller
             'gambar' => 'required|image|file',
         ]);
         if ($request->file('gambar')) {
-            $validatedData['gambar'] = $request->file('gambar')->store('gambar',);
+            $validatedData['gambar'] = $request->file('gambar')->store('gambar');
         }
 
         // $validatedData['user_id'] = auth()->user()->id;

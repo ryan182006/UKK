@@ -12,14 +12,13 @@
                             class="text-gray-200 text-lg font-semibold hover:text-gray-300">Home</a>
                     </li>
                     <li class="mr-6">
-                        <span></span>
+
                         <a href="{{ route('shop') }}"
-                            class="text-gray-200 text-lg font-semibold hover:text-gray-300">Shop</a>
+                            class="text-gray-200 text-lg font-semibold hover:text-gray-300">Product</a>
                     </li>
                     <li class="mr-6">
                         <a href="/pesanan/panding"
-                            class="text-gray-200 text-lg font-semibold hover:text-gray-300">Tentang
-                            Kami</a>
+                            class="text-gray-200 text-lg font-semibold hover:text-gray-300">About</a>
                     </li>
                     <li class="mr-6">
                         <a href="/cart" class="text-gray-200 text-lg font-semibold hover:text-gray-300">
@@ -40,19 +39,20 @@
                                     d="M16 14V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h12a1 1 0 0 0 0-2h-1v-2a2 2 0 0 0 2-2ZM4 2h2v12H4V2Zm8 16H3a1 1 0 0 1 0-2h9v2Z" />
                             </svg>
                         </a>
-                    </li><li class="relative group mr-6" onclick="toggleDropdownProfile()">
-                        <a href="#" class="text-gray-200 text-lg font-semibold hover:text-gray-300">{{auth()->user()->name}}</a>
+                    </li>
+                    <li class="relative group mr-6" onclick="toggleDropdownProfile()">
+                        <a href="#"
+                            class="text-gray-200 text-lg font-semibold hover:text-gray-300">{{ auth()->user()->name }}</a>
                         <ul id="dropdown"
                             class="absolute right-0 w-48 mt-2 bg-white border border-gray-200 rounded-lg shadow-md hidden">
-                            <li><a href="{{ route('ViewProfile') }}"
+                            {{-- <li><a href="{{ route('ViewProfile') }}"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">View Profile</a>
-                            </li>
-                            <li class="mr-6">
+                            </li> --}}
+                            <li class="mr-6 ">
                                 <form action="/logout" method="post">
                                     @csrf
-                                    <button type="submit"
-                                        class="flex items-center p- text-gray-200 rounded-lg hover:bg-gray-700 group">
-                                        <svg class="flex-shrink-0 w-4 h-4 text-gray-500 transition duration-75 group-hover:text-gray-300"
+                                    <button type="submit" class="flex items-center p- text-gray-600 rounded-lg group ">
+                                        <svg class="flex-shrink-0 w-4 h-4 text-gray-500 transition duration-75 "
                                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                             viewBox="0 0 18 16">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -87,7 +87,7 @@
                         <a href="{{ route('home') }}"
                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Home</a>
                         <a href="{{ route('shop') }}"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Shop</a>
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Product</a>
                         <a href="" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Contact</a>
                         <a href="/cart"
                             class="text-black-200 block px-4 py-2 text-lg font-semibold hover:text-gray-300">

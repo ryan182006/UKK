@@ -41,6 +41,25 @@
                            class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Admin Panel</span>
                     </a>
                 </div>
+                <div class="flex items-center space-x-4">
+                    <!-- Profil Avatar -->
+                    <div class="relative">
+                        <button id="profileDropdown" type="button" class="flex items-center focus:outline-none">
+                            <img src="{{asset('banner/avatar.jpeg')}}" alt="User Avatar" class="w-8 h-8 rounded-full">
+                            <span class="ml-2 text-gray-700 dark:text-gray-300">{{ auth()->user()->name }}</span>
+                        </button>
+
+                        <!-- Dropdown untuk profil -->
+                        <div id="profileDropdownContent" class="absolute right-0 mt-2 bg-white border border-gray-200 dark:bg-gray-800 dark:border-gray-700 rounded-md shadow-md hidden">
+                            <!-- Isi dropdown, misalnya link ke profil atau logout -->
+                            <a href="/user-profile" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Profil</a>
+                            <form action="/logout" method="post">
+                                @csrf
+                                <button type="submit" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 w-full text-left">Logout</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -174,6 +193,26 @@
     </div>
 
     @yield('script')
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get dropdown button and content
+            var profileDropdownButton = document.getElementById('profileDropdown');
+            var profileDropdownContent = document.getElementById('profileDropdownContent');
+
+            // Show dropdown content when button is clicked
+            profileDropdownButton.addEventListener('click', function () {
+                profileDropdownContent.classList.toggle('hidden');
+            });
+
+            // Hide dropdown content when clicking outside of it
+            document.addEventListener('click', function (event) {
+                if (!profileDropdownButton.contains(event.target) && !profileDropdownContent.contains(event.target)) {
+                    profileDropdownContent.classList.add('hidden');
+                }
+            });
+        });
+    </script>
 
     {{-- <script>
     document.addEventListener('DOMContentLoaded', function () {

@@ -24,6 +24,7 @@
                                 <table class="table text-center w-full border">
                                     <thead>
                                         <tr class="table-head-row">
+                                            <th class="border-t-0 border-b border-gray-300 product-name">Gambar</th>
                                             <th class="border-t-0 border-b border-gray-300 product-name">Nama Barang</th>
                                             <th class="border-t-0 border-b border-gray-300 product-price">Harga</th>
                                             <th class="border-t-0 border-b border-gray-300 product-quantity">Kuantitas</th>
@@ -33,6 +34,8 @@
                                     <tbody>
                                         @foreach ($keranjangs as $keranjang)
                                             <tr class="table-body-row">
+                                                <td class="border-t-0 border-b border-gray-300 product-name"> <img src="{{ asset('storage/' . $keranjang->barang->gambar) }}" alt=""
+                                                    class="h-[60px]"></td>
                                                 <td class="border-t-0 border-b border-gray-300 product-name">{{ $keranjang->barang->nama_barang }}</td>
                                                 <td class="border-t-0 border-b border-gray-300 product-price">Rp. {{ number_format($keranjang->barang->harga) }}</td>
                                                 <td class="border-t-0 border-b border-gray-300 product-quantity">{{ $keranjang->kuantitas }}</td>
@@ -43,11 +46,11 @@
                                     <tfoot class="border-t-1 border-b-0 border-gray-300">
                                         <tr>
                                             <td colspan="3" class="text-center">Ongkos Kirim</td>
-                                            <td>Rp. 7,000</td>
+                                            <td>Rp. {{ number_format($ongkir)}}</td>
                                         </tr>
                                         <tr>
                                             <td colspan="3" class="text-center border-b-0">Total</td>
-                                            <td class="border-b-0">Rp. {{ number_format($total + 7000) }}</td>
+                                            <td class="border-b-0">Rp. {{ number_format($total + $ongkir) }}</td>
                                         </tr>
                                     </tfoot>
                                 </table>

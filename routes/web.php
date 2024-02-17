@@ -12,6 +12,7 @@ use App\Http\Controllers\OngkirController;
 use App\Http\Controllers\PaymentCallbackController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\PesananController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 
@@ -60,7 +61,9 @@ Route::post('/changeStatus/{checkout:id}', [PesananController::class, 'changeSta
 // user
 Route::group(['middleware' => ['auth', 'ChekRole:user']], function () {
     Route::get('/home', [MainController::class, 'index'])->name('home');
-    Route::get('/shop', [MainController::class, 'toko'])->name('shop');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('ViewProfile');
+    Route::post('/profile', [ProfileController::class, 'updateProfile']);
+    Route::get('/shop', [MainController::class, 'search'])->name('shop');
     Route::resource('cart', KeranjangController::class);
     Route::post('cart/{barang:id}', [KeranjangController::class, 'addToCart']);
     Route::delete('cart/cart/{keranjang:id}', [KeranjangController::class, 'destroy']);
